@@ -1,12 +1,12 @@
 Summary:	Visual diff for binary files
 Summary(pl.UTF-8):	Odpowiednik diffa dla plików binarnych
 Name:		hexdiff
-Version:	0.0.48
+Version:	0.0.50
 Release:	1
 License:	distributable
 Group:		Applications/Text
 Source0:	http://tboudet.free.fr/hexdiff/%{name}.tar.gz
-# Source0-md5:	f606d3a6af616b53395102a2cb1a243c
+# Source0-md5:	68dbf4c610f4fd1817401bcf6c671b71
 URL:		http://tboudet.free.fr/hexdiff/
 BuildRequires:	ncurses-devel >= 5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
