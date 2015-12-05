@@ -2,7 +2,7 @@ Summary:	Visual diff for binary files
 Summary(pl.UTF-8):	Odpowiednik diffa dla plików binarnych
 Name:		hexdiff
 Version:	0.0.50
-Release:	2
+Release:	3
 License:	distributable
 Group:		Applications/Text
 Source0:	http://tboudet.free.fr/hexdiff/%{name}.tar.gz
