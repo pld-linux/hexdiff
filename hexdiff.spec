@@ -2,11 +2,13 @@ Summary:	Visual diff for binary files
 Summary(pl.UTF-8):	Odpowiednik diffa dla plików binarnych
 Name:		hexdiff
 Version:	0.0.50
-Release:	3
+Release:	4
 License:	distributable
 Group:		Applications/Text
 Source0:	http://tboudet.free.fr/hexdiff/%{name}.tar.gz
 # Source0-md5:	68dbf4c610f4fd1817401bcf6c671b71
+Source1:	http://manpages.ubuntu.com/manpages.gz/vivid/man1/hexdiff.1.gz
+# Source1-md5:	33bc4cc881971bd3f5d59ae42f9ab415
 URL:		http://tboudet.free.fr/hexdiff/
 BuildRequires:	ncurses-devel >= 5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -24,14 +26,15 @@ plikami.
 %build
 %{__make} \
 	COMP="%{__cc}" \
-	COPT="%{rpmcflags} -I/usr/include/ncurses -DVERSION=\\\"%{version}\\\" -DTRACE=0 -ansi"
+	COPT="%{rpmcppflags} %{rpmcflags} -I/usr/include/ncurses -DVERSION=\\\"%{version}\\\" -DTRACE=0 -ansi"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/{,fr}/man1}
 
 install %{name} $RPM_BUILD_ROOT%{_bindir}
-install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
+zcat %{SOURCE1} >  $RPM_BUILD_ROOT%{_mandir}/man1/hexdiff.1
+install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/fr/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -39,5 +42,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc BUGS CHANGES README TODO
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/hexdiff
+%{_mandir}/man1/hexdiff.1*
+%{_mandir}/fr/man1/hexdiff.1*
